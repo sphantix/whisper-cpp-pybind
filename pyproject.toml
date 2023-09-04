@@ -1,19 +1,15 @@
 [tool.poetry]
-name = "whisper-cpp"
+name = "whisper_cpp_python"
 version = "0.1.0"
-description = ""
+description = "Python bindings for the whisper.cpp library"
 authors = ["sphantix <sphantix@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-uvicorn = { version = "^0.23.2", optional = true }
-fastapi = { version = ">=0.103.0", optional = true }
 
 
 [tool.poetry.group.dev.dependencies]
-uvicorn = "^0.23.2"
-fastapi = "^0.103.0"
 
 [build-system]
 requires = ["poetry-core"]
