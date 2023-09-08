@@ -3,7 +3,6 @@ from ctypes import (
     POINTER,
     cast,
 )
-import numpy as np
 
 from .whisper_cpp import (
     whisper_context_p,
@@ -70,7 +69,6 @@ def whisper_print_segment_callback(
 
         if not data.contents.no_timestamps:
             print("\n")
-
 
 def whisper_print_progress_callback(
     whiper_context: whisper_context_p,

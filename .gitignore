@@ -1,5 +1,9 @@
 .vscode/
 
+_skbuild/
+
+*.egg-info/
+
 CMakeFiles/
 CMakeCache.txt
 Makefile
