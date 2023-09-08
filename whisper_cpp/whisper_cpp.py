@@ -2,18 +2,13 @@ import sys
 import os
 import ctypes
 from ctypes import (
-    c_double,
     c_int,
     c_float,
     c_char_p,
-    c_int32,
-    c_uint32,
     c_int64,
-    c_uint64,
     c_void_p,
     c_bool,
     POINTER,
-    _Pointer,  # type: ignore
     Structure,
     Array,
     c_uint8,
@@ -94,7 +89,7 @@ GGML_USE_CUBLAS = hasattr(_lib, "ggml_init_cublas")
 GGML_CUDA_MAX_DEVICES = ctypes.c_int(16)
 
 # define WHISPER_SAMPLE_RATE 16000
-WHISPER_SAMPLE_RATE = ctypes.c_int(16000)
+WHISPER_SAMPLE_RATE = 16000
 
 # define WHISPER_N_FFT       400
 WHISPER_N_FFT = ctypes.c_int(400)
@@ -171,7 +166,7 @@ whisper_model_loader_p = POINTER(whisper_model_loader)
 
 # WHISPER_API struct whisper_context * whisper_init_from_file(const char * path_model);
 def whisper_init_from_file(path_model: bytes) -> whisper_context_p:
-    return _lib.whisper_init_from_file(bytes)
+    return _lib.whisper_init_from_file(path_model)
 
 _lib.whisper_init_from_file.argtypes = [c_char_p]
 _lib.whisper_init_from_file.restype = whisper_context_p
@@ -848,6 +843,14 @@ _lib.whisper_print_system_info.restype = c_char_p
 WHISPER_SAMPLING_GREEDY = c_int(0)
 WHISPER_SAMPLING_BEAM_SEARCH = c_int(1)
 
+class whisper_segment_callback_user_data(Structure):
+    _fields_ = [
+        ("no_timestamps", c_bool),
+        ("print_colors", c_bool),
+        ("print_special", c_bool),
+        ("tinydiarize", c_bool),
+        ("tdrz_speaker_turn", c_char_p),
+]
 # // Text segment callback
 # // Called on every newly generated text segment
 # // Use the whisper_full_...() functions to obtain the text segments
@@ -858,6 +861,11 @@ whisper_new_segment_callback_fn_t=CFUNCTYPE(None,
                                             c_int,
                                             c_void_p)
 
+class whisper_progress_callback_user_data(Structure):
+    _fields_ = [
+        ("progress_step", c_int),
+        ("progress_prev", c_int),
+]
 # // Progress callback
 # typedef void (*whisper_progress_callback)(struct whisper_context * ctx, struct whisper_state * state, int progress, void * user_data);
 whisper_progress_callback_fn_t=CFUNCTYPE(None,
@@ -866,6 +874,10 @@ whisper_progress_callback_fn_t=CFUNCTYPE(None,
                                          c_int,
                                          c_void_p)
 
+class whisper_encoder_begin_callback_user_data(Structure):
+    _fields_ = [
+        ("is_aborted", c_bool),
+]
 # // Encoder begin callback
 # // If not NULL, called before the encoder starts
 # // If it returns false, the computation is aborted
