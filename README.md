@@ -1,0 +1,1 @@
+ pip install -vv --config-settings="--build-option=--accelerate=openblas" .
