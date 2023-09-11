@@ -1,16 +1,16 @@
-# whisper.cpp.python: python bindings for whisper.cpp
+# whisper-cpp-py: python bindings for whisper.cpp
 
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/sphantix/whisper.cpp.python/build_and_publish.yml)
-![GitHub](https://img.shields.io/github/license/sphantix/whisper.cpp.python)
-![PyPI](https://img.shields.io/pypi/v/whisper.cpp.python)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/sphantix/whisper-cpp-py/build_and_publish.yml)
+![GitHub](https://img.shields.io/github/license/sphantix/whisper-cpp-py)
+![PyPI](https://img.shields.io/pypi/v/whisper-cpp-py)
 
-whisper.cpp.python provides an interface for calling [whisper.cpp](https://github.com/ggerganov/whisper.cpp) in Python. And whisper.cpp provides accelerated inference for [whisper](https://github.com/openai/whisper) models. This project provides both high-level and low-level API. The high-level API almost implement all the features of the [main example](https://github.com/ggerganov/whisper.cpp/tree/master/examples/main) of whisper.cpp
+whisper-cpp-py provides an interface for calling [whisper.cpp](https://github.com/ggerganov/whisper.cpp) in Python. And whisper.cpp provides accelerated inference for [whisper](https://github.com/openai/whisper) models. This project provides both high-level and low-level API. The high-level API almost implement all the features of the [main example](https://github.com/ggerganov/whisper.cpp/tree/master/examples/main) of whisper.cpp
 
 ## Installation
 
 ### Install form PyPI
 ```bash
-pip intall whisper.cpp.python
+pip intall whisper-cpp-py
 ```
 
 ### Install Locally
@@ -143,4 +143,4 @@ This package is under active development and any contributions will be welcomed.
 
 ## License
 
-whisper.cpp.python is released under the MIT License.
+whisper-cpp-py is released under the MIT License.
