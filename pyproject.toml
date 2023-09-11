@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "whisper_cpp_python"
-version = "0.1.1"
+name = "whisper.cpp.python"
+version = "0.1.2"
 description = "Python bindings for the whisper.cpp library"
 authors = ["sphantix <sphantix@gmail.com>"]
 readme = "README.md"

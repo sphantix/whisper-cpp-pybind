@@ -1,4 +1,3 @@
- pip install -vv --config-settings="--build-option=--accelerate=openblas" .
 # whisper.cpp.python: python bindings for whisper.cpp
 
 <!-- ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/carloscdias/whisper-cpp-python/build_and_publish.yml)
