@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 from skbuild import setup
 
-def get_accelerate_option() -> str | None:
+def get_accelerate_option() -> str:
     accelerate = None
     accelerate_option = [s for s in sys.argv if "--accelerate" in s]
     for element in accelerate_option:

@@ -4,6 +4,10 @@ _skbuild/
 
 *.egg-info/
 
+dist/
+
+MANIFEST.in
+
 CMakeFiles/
 CMakeCache.txt
 Makefile
