@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "whisper-cpp-py"
+name = "whisper-cpp-pybind"
 version = "0.1.2"
 description = "Python bindings for the whisper.cpp library"
 authors = ["sphantix <sphantix@gmail.com>"]

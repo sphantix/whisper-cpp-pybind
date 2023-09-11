@@ -29,7 +29,7 @@ if accelerate is not None:
         os.environ["WHISPER_COREML"] = "1"
 
 setup(
-    name="whisper-cpp-py",
+    name="whisper-cpp-pybind",
     description="A Python wrapper for whisper.cpp",
     long_description=long_description,
     long_description_content_type="text/markdown",
