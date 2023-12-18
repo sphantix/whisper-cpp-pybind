@@ -57,7 +57,6 @@ class Whisper:
         self.language = "en"
         self.translate = False
 
-        print(type(self.pcmf32s))
         if self.model_path is None:
             raise ValueError("model_path must be specified!")
 
@@ -152,23 +151,25 @@ class Whisper:
         if diarize and tinydiarize:
             raise ValueError("Cannot enable both diarize and tinydiarize!")
 
+        # print system information
         if self.verbose:
-            # print system information
             system_flags = whisper_cpp.whisper_print_system_info().decode("utf-8")
             print(f"\nsystem information: total cpu core count = {multiprocessing.cpu_count()}; threads count in use = {n_threads*n_processors}")
             print(f"system flags: {system_flags}")
 
-            # print some info about the processing
-            if whisper_cpp.whisper_is_multilingual(self.whisper_ctx):
-                if language != "en" or translate:
-                    language = "en"
-                    translate = False
-                    print(f"{__name__}: WARNING: multilingual model detected, disabling translation and setting language to english")
+        if not whisper_cpp.whisper_is_multilingual(self.whisper_ctx):
+            if language != "en" or translate:
+                language = "en"
+                translate = False
+                if self.verbose:
+                    print(f"{__name__}: WARNING: multilingual model disabled, so disabling translation and setting language to english")
 
-            if detect_language:
-                language = "auto"
+        if detect_language:
+            language = "auto"
+            if self.verbose:
                 print(f"{__name__}: WARNING: language detection enabled, setting language to auto")
 
+        if self.verbose:
             task = "translate" if translate else "transcribe"
             print(f"{__name__}: processing {fname_inp} ({len(self.pcmf32)} samples, {len(self.pcmf32)/whisper_cpp.WHISPER_SAMPLE_RATE} seconds), {n_threads} threads, {n_processors} processors, lang = {language}, task = {task} timestamps = {not self.no_timestamps}")
 

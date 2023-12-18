@@ -33,7 +33,7 @@ setup(
     description="A Python wrapper for whisper.cpp",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    version="0.1.2",
+    version="0.1.3",
     author="sphantix",
     author_email="sphantix@gmail.com",
     license="MIT",
