@@ -16,11 +16,11 @@ pip intall whisper-cpp-pybind
 ### Install Locally
 
 ```bash
-git clone --recurse-submodules https://github.com/abetlen/llama-cpp-python.git
-cd llama-cpp-python
+git clone --recurse-submodules https://github.com/sphantix/whisper-cpp-pybind.git
+cd whisper-cpp-python
 
 # Install with pip
-pip install -e .
+pip install .
 ```
 
 ### Install with Hardware Acceleration
